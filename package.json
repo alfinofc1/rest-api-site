@@ -1,0 +1,20 @@
+{
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start index.js --deep-monitoring --attach --name apisite",
+    "stop": "pm2 kill",
+    "restart": "git pull && npm stop && npm start",
+    "stash": "git stash && git stash drop"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.2.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-fetch": "^3.3.2",
+    "cheerio": "^1.0.0-rc.12",
+    "pm2": "^5.2.0",
+    "mongoose": "^6.2.1",
+    "mongodb": "^6.5.0",
+    "axios": "^1.6.7"
+  }
+}
