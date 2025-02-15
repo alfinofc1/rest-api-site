@@ -31,7 +31,7 @@ const { chatgptimg } = require("./BK9/chatgptimg");
 
 const MongoClient = require('mongodb').MongoClient;
 
-const url = 'mongodb+srv://salman:ahmad@cluster0.gjslz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const url = 'mongodb+srv://zanssxploit:pISqUYgJJDfnLW9b@cluster0.fgram.mongodb.net/?retryWrites=true&w=majority';
 const dbName = 'counts';
 
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
