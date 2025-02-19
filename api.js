@@ -203,19 +203,19 @@ router.get("/downloader/fb", (req, res) => {
 });
 ///====================textpro=============
 
-router.get('/downloader/marvel-studios', async (req, res, next) => {
-	var text1 = req.query.text
-	var text2 = req.query.text2
-	if (!text1 ) return res.json({ status : false, owner:'alfinofc', message : "[!] masukan parameter text"})   
-	if (!text2 ) return res.json({ status : false, owner:'alfinofc', message : "[!] masukan parameter text2"}) 
-	alip.textpro("https://textpro.me/create-logo-style-marvel-studios-online-971.html", [text1,text2])
-.then((data) =>{ 
-	res.set({'Content-Type': 'image/png'})
-	res.send(data)
-})
-.catch((err) =>{
- res.json(loghandler.error)
-})
+router.get('/downloader/randomgambar/couplepp', (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/kopel.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: 'alfinofc',
+		result: {
+			male: random.male,
+			female: random.female
+		}
+	})
+
 })
 //================================================= A I =================================================
 router.get("/ai", (req, res) => {
