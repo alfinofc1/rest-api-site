@@ -202,7 +202,23 @@ router.get("/downloader/fb", (req, res) => {
         });
 });
 ///====================textpro=============
+router.get('/downloader/randomquote', (req, res, next) => {
 
+    fetch(encodeURI(`https://mhankbarbar.tech/api/randomquotes`))
+        .then(response => response.json())
+        .then(data => {
+             res.json({
+                 status : true,
+                 creator : 'alfinofc',
+                 result : {
+                     author : `${data.author}`,
+                     quotes : `${data.quotes}`,
+                 },
+                 message : 'selamat menggunakan'
+             })
+         })
+         .catch(e => {})
+})
 //================================================= A I =================================================
 router.get("/ai", (req, res) => {
     fs.readFile("./html/ai.html", 'utf8', (err, data) => {
