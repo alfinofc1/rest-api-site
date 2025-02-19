@@ -210,8 +210,8 @@ router.get('/api/randomgambar/couplepp', async (req, res) => {
 	status: true,
 	creator: 'alfinofc',
 		result: {
-			male: random.male,
-			female: random.female
+			male:
+			female:
 		}
 	});
 });
