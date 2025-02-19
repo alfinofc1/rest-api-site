@@ -203,9 +203,9 @@ router.get("/downloader/fb", (req, res) => {
 });
 ///====================textpro=============
 
-router.get('/downloader/randomgambar/couplepp', (req, res, next) => {
+router.get('/api/randomgambar/couplepp', async (req, res, next) => {
 	let resultt = await fetchJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/kopel.json')
-	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	let random = resultt[Math.floor(Math.random()  resultt.length)]
 	limitapikey(req.query.apikey)
 	res.json({
 	status: true,
