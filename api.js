@@ -215,7 +215,7 @@ router.get("/gpt4", (req, res) => {
     axios.get('https://archive-ui.tanakadomp.biz.id/search/xnxx?q='+text)
         .then((response) => {
             const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
-            res.send({status: true, owner: '@alfinof ', BK9: responseData});
+            res.send({alfin: responseData});
         })
         .catch((err) => {
             console.log(err);
