@@ -319,6 +319,69 @@ router.get("/apkpure", (req, res) => {
             res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
         });
 });
+
+router.get("/subdomains", (req, res) => {
+    const text = req.query.q || req.query.query;
+
+    // Di sini Anda meletakkan variabel untuk teks,
+    // Artinya daripada menulis kalimat ini setiap kali req.query.q || permintaan.permintaan.permintaan 
+    //Tulis teks saja
+
+    if(!text) return res.send({status: false, owner: '@alfinofc', err: 'Tulis sesuatu!'});
+  // if(!text) berarti jika dia menulis sesuatu, kirimkan dia baris ini yang mengatakan tulis sesuatu
+
+    axios.get('https://api.siputzx.my.id/api/tools/subdomains?domain='+text)
+        .then((response) => {
+            const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
+            res.send({alfin: responseData});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
+        });
+});
+
+router.get("/text2base64", (req, res) => {
+    const text = req.query.q || req.query.query;
+
+    // Di sini Anda meletakkan variabel untuk teks,
+    // Artinya daripada menulis kalimat ini setiap kali req.query.q || permintaan.permintaan.permintaan 
+    //Tulis teks saja
+
+    if(!text) return res.send({status: false, owner: '@alfinofc', err: 'Tulis sesuatu!'});
+  // if(!text) berarti jika dia menulis sesuatu, kirimkan dia baris ini yang mengatakan tulis sesuatu
+
+    axios.get('https://api.siputzx.my.id/api/tools/text2base64?text='+text)
+        .then((response) => {
+            const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
+            res.send({alfin: responseData});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
+        });
+});
+
+router.get("/ai/lepton", (req, res) => {
+    const text = req.query.q || req.query.query;
+
+    // Di sini Anda meletakkan variabel untuk teks,
+    // Artinya daripada menulis kalimat ini setiap kali req.query.q || permintaan.permintaan.permintaan 
+    //Tulis teks saja
+
+    if(!text) return res.send({status: false, owner: '@alfinofc', err: 'Tulis sesuatu!'});
+  // if(!text) berarti jika dia menulis sesuatu, kirimkan dia baris ini yang mengatakan tulis sesuatu
+
+    axios.get('https://api.siputzx.my.id/api/ai/lepton?text='+text)
+        .then((response) => {
+            const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
+            res.send({alfin: responseData});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
+        });
+});
 //
 //================================================= A I =================================================
 router.get("/ai", (req, res) => {
