@@ -203,7 +203,7 @@ router.get("/downloader/fb", (req, res) => {
 });
 ///====================textpro=============
 
-router.get('/textpro/marvel-studios', async (req, res, next) => {
+router.get('/downloader/marvel-studios', async (req, res, next) => {
 	var text1 = req.query.text
 	var text2 = req.query.text2
 	if (!text1 ) return res.json({ status : false, owner:'alfinofc', message : "[!] masukan parameter text"})   
