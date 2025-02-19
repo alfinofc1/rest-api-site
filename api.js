@@ -203,18 +203,6 @@ router.get("/downloader/fb", (req, res) => {
 });
 ///====================textpro=============
 
-router.get('/api/randomgambar/couplepp', async (req, res) => {
-	let resultt = await fetchJson('https://raw.githubusercontent.com/AlipBot/data-rest-api/main/kopel.json')
-	let random = resultt[Math.floor(Math.random()  resultt.length)]
-	res.json({
-	status: true,
-	creator: 'alfinofc',
-		result: {
-			male:
-			female:
-		}
-	});
-});
 //================================================= A I =================================================
 router.get("/ai", (req, res) => {
     fs.readFile("./html/ai.html", 'utf8', (err, data) => {
