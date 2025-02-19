@@ -256,6 +256,19 @@ router.get("/ai/gptimg", (req, res) => {
         });
 });
 
+router.get('/search/xnxx', (req, res) => {
+    try {
+        const query = req.query.q;
+        if (!query) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter q!" });
+
+        const { data } = await axiosInstance.get(`https://archive-ui.tanakadomp.biz.id/search/xnxx?q=${encodeURIComponent(query)}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data dari XNXX." });
+    } finally {
+        console.log('XNXX Search request completed.');
+    }
+});
 //================================================= T O O L S =================================================
 router.get("/tools", (req, res) => {
     fs.readFile("./html/tools.html", 'utf8', (err, data) => {
