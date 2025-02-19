@@ -201,7 +201,22 @@ router.get("/downloader/fb", (req, res) => {
             l(err)
         });
 });
+///====================textpro=============
 
+router.get('/textpro/marvel-studios', async (req, res, next) => {
+	var text1 = req.query.text
+	var text2 = req.query.text2
+	if (!text1 ) return res.json({ status : false, owner:'alfinofc', message : "[!] masukan parameter text"})   
+	if (!text2 ) return res.json({ status : false, owner:'alfinofc', message : "[!] masukan parameter text2"}) 
+	alip.textpro("https://textpro.me/create-logo-style-marvel-studios-online-971.html", [text1,text2])
+.then((data) =>{ 
+	res.set({'Content-Type': 'image/png'})
+	res.send(data)
+})
+.catch((err) =>{
+ res.json(loghandler.error)
+})
+})
 //================================================= A I =================================================
 router.get("/ai", (req, res) => {
     fs.readFile("./html/ai.html", 'utf8', (err, data) => {
