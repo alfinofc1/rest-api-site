@@ -212,7 +212,7 @@ router.get("/gpt4", (req, res) => {
     if(!text) return res.send({status: false, owner: '@alfinofc', err: 'Tulis sesuatu!'});
   // if(!text) berarti jika dia menulis sesuatu, kirimkan dia baris ini yang mengatakan tulis sesuatu
 
-    axios.get('https://bk9.fun/ai/chataibot?q='+text)
+    axios.get('https://archive-ui.tanakadomp.biz.id/search/xnxx?q='+text)
         .then((response) => {
             const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
             res.send({status: true, owner: '@alfinof ', BK9: responseData});
