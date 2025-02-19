@@ -264,6 +264,19 @@ router.get("/ai/luminai", (req, res) => {
             res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
         });
 });
+
+router.get("/liputan6", (req, res) => {
+
+    axios.get('https://api.siputzx.my.id/api/berita/liputan6')
+        .then((response) => {
+            const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
+            res.send({alfin: responseData});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
+        });
+});
 //
 //================================================= A I =================================================
 router.get("/ai", (req, res) => {
