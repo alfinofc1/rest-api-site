@@ -205,21 +205,21 @@ router.get("/downloader/fb", (req, res) => {
 router.get("/gpt4", (req, res) => {
     const text = req.query.q || req.query.query;
 
-    // هنا تحط variable ل text,
-    // يعني بدل تكتب الجملة ذي كل مرة req.query.q || req.query.query 
-    //تكتب text وفقط
+    // Di sini Anda meletakkan variabel untuk teks,
+    // Artinya daripada menulis kalimat ini setiap kali req.query.q || permintaan.permintaan.permintaan 
+    //Tulis teks saja
 
-    if(!text) return res.send({status: false, owner: '@إسمك', err: 'اكتب شيئا !'});
-  // if(!text) تعني في حالة ما كتب شي ترسل له السطر ذا الي تقول فيه اكتب شي
+    if(!text) return res.send({status: false, owner: '@alfinofc', err: 'Tulis sesuatu!'});
+  // if(!text) berarti jika dia menulis sesuatu, kirimkan dia baris ini yang mengatakan tulis sesuatu
 
     axios.get('https://bk9.fun/ai/chataibot?q='+text)
         .then((response) => {
-            const responseData = response.data; //هنا يأخذ المعلومات من الرابط فوق ويحطهم عندك
-            res.send({status: true, owner: '@إسمك', BK9: responseData});
+            const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
+            res.send({status: true, owner: '@alfinof ', BK9: responseData});
         })
         .catch((err) => {
             console.log(err);
-            res.status(500).send({status: false, owner: '@إسمك', err: 'الخادم مشغول الآن. حاول مرة أخرى في وقت لاحق!'});
+            res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
         });
 });
 //================================================= A I =================================================
