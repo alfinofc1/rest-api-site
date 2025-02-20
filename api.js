@@ -384,23 +384,17 @@ router.get("/ai/lepton", (req, res) => {
 });
 
 /////==========waifu====
-router.get('/r/waifu', async (req, res) => {
+router.get('/s/spotify', async (req, res) => {
     try {
-        const response = await axios.get("https://api.siputzx.my.id/api/r/waifu", {
-            responseType: 'arraybuffer' // Penting: minta respons sebagai arraybuffer
-        });
+        const query = req.query.query;
+        if (!query) return res.status(400).json({ creator: "KIKI TECH", result: false, message: "Harap masukkan parameter query!" });
 
-        const imageBuffer = Buffer.from(response.data, 'binary');
-
-        // Tetapkan Content-Type berdasarkan jenis gambar (sesuaikan jika perlu)
-        res.setHeader('Content-Type', 'image/jpeg'); // Asumsi: JPEG. PERIKSA JENIS GAMBAR YANG BENAR
-        res.send(imageBuffer);
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ creator: "kiki TECH", result: false, message: "Gagal mendapatkan waifu random.", error: error.message });
+        const { data } = await axiosInstance.get(`https://api.siputzx.my.id/api/s/spotify?query=${encodeURIComponent(query)}`);
+        res.json(data);
+    } catch {
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Spotify." });
     } finally {
-        console.log('Random Waifu Image request completed.');
+        console.log('Spotify Search request completed.');
     }
 });
 //
