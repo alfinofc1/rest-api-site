@@ -615,7 +615,7 @@ router.get("/ai/deepseek-r1", (req, res) => {
         });
 });
 
-router.get("/otakudesu/search", (req, res) => {
+router.get("/info/cuaca", (req, res) => {
     const text = req.query.q || req.query.query;
 
     // Di sini Anda meletakkan variabel untuk teks,
@@ -625,7 +625,7 @@ router.get("/otakudesu/search", (req, res) => {
     if(!text) return res.send({status: false, owner: '@alfinofc', err: 'Tulis sesuatu!'});
   // if(!text) berarti jika dia menulis sesuatu, kirimkan dia baris ini yang mengatakan tulis sesuatu
 
-    axios.get('https://api.siputzx.my.id/api/anime/otakudesu/search?s='+text)
+    axios.get('https://api.siputzx.my.id/api/info/cuaca?q='+text)
         .then((response) => {
             const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
             res.send({responseData});
