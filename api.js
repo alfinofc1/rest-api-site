@@ -384,18 +384,25 @@ router.get("/ai/lepton", (req, res) => {
 });
 
 /////==========waifu====
-router.get('/ai/qwq-32b-preview', async (req, res) => {
-    try {
-        const content = req.query.content;
-        if (!content) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter content!" });
+router.get("/ai/chat", (req, res) => {
+    const text = req.query.q || req.query.query;
 
-        const { data } = await axiosInstance.get(`https://api.siputzx.my.id/api/ai/qwq-32b-preview?content=${encodeURIComponent(content)}`);
-        res.json({ creator: "WANZOFC TECH", result: true, message: "QWQ 32B AI Response", data: data });
-    } catch {
-        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari AI QWQ 32B." });
-    } finally {
-        console.log('QWQ 32B AI Response request completed.');
-    }
+    // Di sini Anda meletakkan variabel untuk teks,
+    // Artinya daripada menulis kalimat ini setiap kali req.query.q || permintaan.permintaan.permintaan 
+    //Tulis teks saja
+
+    if(!text) return res.send({status: false, owner: '@alfinofc', err: 'Tulis sesuatu!'});
+  // if(!text) berarti jika dia menulis sesuatu, kirimkan dia baris ini yang mengatakan tulis sesuatu
+
+    axios.get('https://api.siputzx.my.id/api/ai/qwq-32b-preview?content='+text)
+        .then((response) => {
+            const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
+            res.send({responseData});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
+        });
 });
 //
 //================================================= A I =================================================
