@@ -573,6 +573,82 @@ router.get("/ai/llama", (req, res) => {
         });
 });
 
+router.get("/ai/dbrx-instruct", (req, res) => {
+    const text = req.query.q || req.query.query;
+
+    // Di sini Anda meletakkan variabel untuk teks,
+    // Artinya daripada menulis kalimat ini setiap kali req.query.q || permintaan.permintaan.permintaan 
+    //Tulis teks saja
+
+    if(!text) return res.send({status: false, owner: '@alfinofc', err: 'Tulis sesuatu!'});
+  // if(!text) berarti jika dia menulis sesuatu, kirimkan dia baris ini yang mengatakan tulis sesuatu
+
+    axios.get('https://api.siputzx.my.id/api/ai/dbrx-instruct?content='+text)
+        .then((response) => {
+            const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
+            res.send({responseData});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
+        });
+});
+
+router.get("/ai/deepseek-r1", (req, res) => {
+    const text = req.query.q || req.query.query;
+
+    // Di sini Anda meletakkan variabel untuk teks,
+    // Artinya daripada menulis kalimat ini setiap kali req.query.q || permintaan.permintaan.permintaan 
+    //Tulis teks saja
+
+    if(!text) return res.send({status: false, owner: '@alfinofc', err: 'Tulis sesuatu!'});
+  // if(!text) berarti jika dia menulis sesuatu, kirimkan dia baris ini yang mengatakan tulis sesuatu
+
+    axios.get('https://api.siputzx.my.id/api/ai/deepseek-r1?content='+text)
+        .then((response) => {
+            const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
+            res.send({responseData});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
+        });
+});
+
+router.get("/otakudesu/search", (req, res) => {
+    const text = req.query.q || req.query.query;
+
+    // Di sini Anda meletakkan variabel untuk teks,
+    // Artinya daripada menulis kalimat ini setiap kali req.query.q || permintaan.permintaan.permintaan 
+    //Tulis teks saja
+
+    if(!text) return res.send({status: false, owner: '@alfinofc', err: 'Tulis sesuatu!'});
+  // if(!text) berarti jika dia menulis sesuatu, kirimkan dia baris ini yang mengatakan tulis sesuatu
+
+    axios.get('https://api.siputzx.my.id/api/anime/otakudesu/search?s='+text)
+        .then((response) => {
+            const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
+            res.send({responseData});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
+        });
+});
+
+router.get("/info/bmkg", (req, res) => {
+
+    axios.get('https://api.siputzx.my.id/api/info/bmkg')
+        .then((response) => {
+            const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
+            res.send({responseData});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
+        });
+});
+
 router.get("/cekml", (req, res) => {
     const text = req.query.id || req.query.query;
     const text2 = req.query.zoneid || req.query.query;
