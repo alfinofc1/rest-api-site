@@ -384,7 +384,7 @@ router.get("/ai/lepton", (req, res) => {
 });
 
 /////==========waifu====
-router.get('/s/spotify', async (req, res) => {
+router.get('/s/spotify', (req, res) => {
     try {
         const query = req.query.query;
         if (!query) return res.status(400).json({ creator: "KIKI TECH", result: false, message: "Harap masukkan parameter query!" });
