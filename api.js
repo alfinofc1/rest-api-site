@@ -384,17 +384,17 @@ router.get("/ai/lepton", (req, res) => {
 });
 
 /////==========waifu====
-router.get("/download/spotify", async (req, res) => {
+router.get('/ai/qwq-32b-preview', async (req, res) => {
     try {
-        const query = req.query.query;
-        if (!query) return res.status(400).json({ creator: "KIKI TECH", result: false, message: "Harap masukkan parameter query!" });
+        const content = req.query.content;
+        if (!content) return res.status(400).json({ creator: "WANZOFC TECH", result: false, message: "Harap masukkan parameter content!" });
 
-        const { data } = await axiosInstance.get(`https://api.siputzx.my.id/api/s/spotify?query=${encodeURIComponent(query)}`);
-        res.json(data);
+        const { data } = await axiosInstance.get(`https://api.siputzx.my.id/api/ai/qwq-32b-preview?content=${encodeURIComponent(content)}`);
+        res.json({ creator: "WANZOFC TECH", result: true, message: "QWQ 32B AI Response", data: data });
     } catch {
-        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mengambil data Spotify." });
+        res.status(500).json({ creator: "WANZOFC TECH", result: false, message: "Gagal mendapatkan respons dari AI QWQ 32B." });
     } finally {
-        console.log('Spotify Search request completed.');
+        console.log('QWQ 32B AI Response request completed.');
     }
 });
 //
