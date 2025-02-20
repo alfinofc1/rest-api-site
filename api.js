@@ -382,6 +382,27 @@ router.get("/ai/lepton", (req, res) => {
             res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
         });
 });
+
+/////==========waifu====
+router.get('/r/waifu', async (req, res) => {
+    try {
+        const response = await axios.get("https://api.siputzx.my.id/api/r/waifu", {
+            responseType: 'arraybuffer' // Penting: minta respons sebagai arraybuffer
+        });
+
+        const imageBuffer = Buffer.from(response.data, 'binary');
+
+        // Tetapkan Content-Type berdasarkan jenis gambar (sesuaikan jika perlu)
+        res.setHeader('Content-Type', 'image/jpeg'); // Asumsi: JPEG. PERIKSA JENIS GAMBAR YANG BENAR
+        res.send(imageBuffer);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ creator: "kiki TECH", result: false, message: "Gagal mendapatkan waifu random.", error: error.message });
+    } finally {
+        console.log('Random Waifu Image request completed.');
+    }
+});
 //
 //================================================= A I =================================================
 router.get("/ai", (req, res) => {
