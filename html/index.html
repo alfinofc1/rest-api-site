@@ -55,25 +55,6 @@
     <div class="loading-text">Loading...</div>
   </div>
 </div>
-<link rel="stylesheet" href="https://nathanprinsley-files.prinsh.com/data-1/css/deface(03-01).css"/>
-</head> 
- <body> 
-  <div class="stars"> 
-   <center> 
-    <h1>ALFINOFC</h1> 
-   </center> 
-  </div> 
-  <br> 
-  <div class="twinkling"> 
-   <center> 
-    <br> 
-    <br> 
-    <br> 
-    <br> 
-    <br> 
-    <img src="https://i.ibb.co.com/C5mRJyxZ/20250220-020429.png" width="250"> 
-    <style> img{ animation-name: rotate ; animation-duration: 6s; animation-play-state: running; animation-timing-function: linear; animation-iteration-count: infinite; } @keyframes rotate{ 10% {transform:rotateY(36deg)} 20% {transform:rotateY(72deg)} 30% {transform:rotateY(108deg)} 40% {transform:rotateY(144deg)} 50% {transform:rotateY(180deg)} 60% {transform:rotateY(216deg)} 70% {transform:rotateY(252deg)} 80% {transform:rotateY(288deg)} 90% {transform:rotateY(324deg)} 100% {transform:rotateY(360deg)} } 
-    </style> 
 <body>
 <header id="header" class="header fixed-top d-flex align-items-center" style="width:100%">
 <div class="d-flex align-items-center justify-content-between">
@@ -199,7 +180,82 @@ try {
 } catch (error) {
   console.error(error);
 } 
-
+</script>
+<main id="main" class="main">
+<section class="section dashboard">
+<div class="row">
+<div class="col-lg-12">
+<div class="row">
+<div class="content-wrapper text-center col-xxl-4 col-xl-12">
+</div>
+<div class="col-xxl-4 col-md-6">
+<div class="card info-card">
+<div class="card-body">
+<h5 class="card-title">Clock</h5>
+<div class="d-flex align-items-center">
+<div class="card-icon alert alert-primary rounded-circle d-flex align-items-center justify-content-center">
+<i class="bi bi-clock"></i>
+</div>
+<div class="ps-3">
+<div class="weight-700 font-24 text-dark" id="browser_info">000</div>
+<div class="font-14 text-secondary weight-500" id="browser_sholat"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xxl-4 col-md-6">
+<div class="card info-card">
+<div class="card-body">
+<h5 class="card-title">Total Visitors</h5>
+<div class="d-flex align-items-center">
+<div class="card-icon alert alert-info rounded-circle d-flex align-items-center justify-content-center">
+<i class="bi bi-eye"></i>
+</div>
+<div class="ps-3">
+<div class="weight-700 font-24 text-dark" id="visitor">Loading...</div>
+<script>
+  setInterval(function() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://apitesterb-63d2ee930338.herokuapp.com/visit");
+  xhr.responseType = "json";
+  xhr.onload = () => document.getElementById('visitor').innerText = '' + xhr.response.visitors + '';
+  xhr.send()
+}, 1000);
+</script>
+<div class="font-14 text-secondary weight-500">Total Visitors</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xxl-4 col-xl-12">
+<div class="card info-card">
+<div class="card-body">
+<h5 class="card-title">Total Request</h5>
+<div class="d-flex align-items-center">
+<div class="card-icon alert alert-warning rounded-circle d-flex align-items-center justify-content-center">
+<i class="bi bi-bar-chart-fill"></i>
+</div>
+<div class="ps-3">
+<h6><span id="Requestcount">Loading...</span></h6>
+<script>
+  setInterval(function() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://apitesterb-63d2ee930338.herokuapp.com/count");
+  xhr.responseType = "json";
+  xhr.onload = () => document.getElementById('Requestcount').innerText = '' + xhr.response.Request_count + '';
+  xhr.send()
+}, 1000);
+</script>
+<span class="text-muted small pt-2 ps-1">Total All Request</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
 <script type="text/javascript">
     let textElement = document.querySelector('div#browser_info');
     let greetingElement = document.querySelector('div#browser_sholat');
@@ -235,7 +291,6 @@ try {
         }
     }
 
-<audio src="https://nathanprinsley-files.prinsh.com/data-1/mp3/horizon.mp3" loop="1" autoplay="1"></audio>
 
 </script>
 <footer id="footer" class="footer">
@@ -244,6 +299,7 @@ try {
 <i class="bi bi-arrow-up-short"></i>
 </a>
 <script src="https://ferdiz-afk.github.io/Nice/assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="js/tampilan.js"></script>
 <script src="https://ferdiz-afk.github.io/Nice/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://ferdiz-afk.github.io/Nice/assets/vendor/chart.js/chart.umd.js"></script>
 <script src="https://ferdiz-afk.github.io/Nice/assets/vendor/echarts/echarts.min.js"></script>
