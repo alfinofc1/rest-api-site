@@ -671,6 +671,17 @@ router.get("/cekml", (req, res) => {
             res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
         });
 });
+
+router.get('/berita/jkt48', async (req, res) => {
+    try {
+        const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/jkt48`);
+        console.log('Berita - JKT48 request completed.');
+        res.json({ founder: FOUNDER, company: COMPANY, status: true, message: "Berita - JKT48", data: data });
+    } catch (error) {
+        console.error("Berita - JKT48 error:", error);
+        res.status(500).json({ founder: FOUNDER, company: COMPANY, status: false, message: "Berita - JKT48 bermasalah.", error: error.message });
+    }
+});
 //
 //================================================= A I =================================================
 router.get("/ai", (req, res) => {
