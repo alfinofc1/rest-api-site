@@ -672,17 +672,42 @@ router.get("/cekml", (req, res) => {
         });
 });
 
-router.get('/berita/jkt48', async (req, res) => {
-    try {
-        const { data } = await axios.get(`https://api.siputzx.my.id/api/berita/jkt48`);
-        console.log('Berita - JKT48 request completed.');
-        res.json({ founder: FOUNDER, company: COMPANY, status: true, message: "Berita - JKT48", data: data });
-    } catch (error) {
-        console.error("Berita - JKT48 error:", error);
-        res.status(500).json({ founder: FOUNDER, company: COMPANY, status: false, message: "Berita - JKT48 bermasalah.", error: error.message });
-    }
+router.get("/info/bmkg", (req, res) => {
+
+    axios.get('https://api.siputzx.my.id/api/info/bmkg')
+        .then((response) => {
+            const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
+            res.send({responseData});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
+        });
 });
-//
+
+router.get("/berita/jkt48", (req, res) => {
+    const text = req.query.id || req.query.query;
+    const text2 = req.query.zoneid || req.query.query;
+
+    // Di sini Anda meletakkan variabel untuk teks,
+    // Artinya daripada menulis kalimat ini setiap kali req.query.q || permintaan.permintaan.permintaan 
+    //Tulis teks saja
+
+    if(!text) return res.send({status: false, owner: '@alfinofc', err: 'Tulis sesuatu!'});
+    if(!text2) return res.send({status: false, owner: '@alfinofc', err: 'Tulis sesuatu!'});
+  // if(!text) berarti jika dia menulis sesuatu, kirimkan dia baris ini yang mengatakan tulis sesuatu
+
+    axios.get('https://api.siputzx.my.id/api/berita/jkt48'+text2)
+        .then((response) => {
+            const responseData = response.data; //Di sini mengambil informasi dari tautan di atas dan menaruhnya di sana untuk Anda
+            res.send({responseData});
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({status: false, owner: '@alfinof ', err: 'Server sedang sibuk sekarang. Coba lagi nanti'});
+        });
+});
+
 //================================================= A I =================================================
 router.get("/ai", (req, res) => {
     fs.readFile("./html/ai.html", 'utf8', (err, data) => {
